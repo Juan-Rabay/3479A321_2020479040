@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logger/logger.dart';
-import 'another_page.dart';
+import 'list_content_page.dart';
+import 'about_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -39,34 +40,18 @@ class _MyHomePageState extends State<MyHomePage> {
     logger.d("Reset counter to $_counter");
   }
 
-  Widget buildBottomNavigationBar() {
-    return BottomAppBar(
-      shape: const CircularNotchedRectangle(),
-      notchMargin: 8.0,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            IconButton(
-              onPressed: _decrementCounter,
-              icon: const Icon(Icons.remove),
-              tooltip: 'Restar',
-            ),
-            IconButton(
-              onPressed: _resetCounter,
-              icon: const Icon(Icons.refresh),
-              tooltip: 'Reiniciar',
-            ),
-            IconButton(
-              onPressed: _incrementCounter,
-              icon: const Icon(Icons.add),
-              tooltip: 'Sumar',
-            ),
-          ],
-        ),
-      ),
-    );
+  void _navigateToAnotherPage() {
+    if (_counter % 2 == 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ListContentPage()),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const AboutPage()),
+      );
+    }
   }
 
   @override
@@ -77,28 +62,62 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('Has presionado el botón esta cantidad de veces:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+        child: Card(
+          margin: const EdgeInsets.all(20.0),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          elevation: 8,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const Text(
+                  '¡Bienvenido a Flutter',
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Flutter es un framework de UI de código abierto para crear aplicaciones.',
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 20),
+                SvgPicture.asset('assets/icons/my_icon.svg', width: 100, height: 100),
+                const SizedBox(height: 20),
+                Text(
+                  'Contador: $_counter',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                      onPressed: _decrementCounter,
+                      icon: const Icon(Icons.remove),
+                      tooltip: 'Restar',
+                    ),
+                    IconButton(
+                      onPressed: _resetCounter,
+                      icon: const Icon(Icons.refresh),
+                      tooltip: 'Reiniciar',
+                    ),
+                    IconButton(
+                      onPressed: _incrementCounter,
+                      icon: const Icon(Icons.add),
+                      tooltip: 'Sumar',
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _navigateToAnotherPage,
+                  child: const Text('Ir a otra pantalla'),
+                ),
+              ],
             ),
-            SvgPicture.asset(iconPath, width: 100, height: 100),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SecondPage()),
-                );
-              },
-              child: const Text('Ir a la segunda pantalla'),
-            ),
-          ],
+          ),
         ),
       ),
-      bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
 }
