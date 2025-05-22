@@ -1,24 +1,45 @@
-# Laboratorio
+# Laboratorio 6 
 
- 2020479040  Juan Rabay
+**Matrícula:** 2020479040  
+**Alumno:** Juan Rabay  
 
-5to laboratorio se hizo lo siguiente:
+## 📖 Resumen de cambios
 
-- Creación de nuevas ramas en Git.
-- Actualización del diseño de la pantalla principal (`Home`) utilizando `Card`, `Column` y `Row`.
-- Inclusión de navegación condicional usando `Navigator.push()`.
-- Creación de dos nuevas pantallas: `ListContentPage` y `AboutPage`.
-- Uso de un `ListView.builder` para desplegar una lista dinámica.
+1. **Ciclo de vida completo** de `MyHomePage` con logs (usando `Logger`):
+   - createState
+   - initState
+   - didChangeDependencies
+   - build (incluye mounted)
+   - reassemble(hot reload)
+   - didUpdateWidget
+   - deactivate
+   - dispose
 
-## Estructura de Pantallas
- - Home
- - About Page
- - List Content Page
-## Navegación
+2. **Gestión de estado global** con **Provider** (ChangeNotifier):
+    Variables: counter, username, allowReset
+    Métodos: incrementCounter(), decrementCounter(), resetCounter(), setUsername(), toggleReset()
 
-- Si el contador es **par**, se navega a la **Lista de Contenidos**.
-- Si el contador es **impar**, se navega a la **pantalla Sobre**.
-- Desde Lista se puede ir a Sobre.
+3. **UI Home**:
+   - Card actualizado con nuevo texto:
+    ¡Bienvenido, "texto!"
+    Descripción del framework
+    Icono SVG
+    Contador Provider
+    Botones **– / reset / +** (reset solo si `allowReset == true`, es decir, cuando el usuario lo permite)
+    Único botón de navegación con **tap = push** / **long-press = pushReplacement**  
+
+4. **Pantallas secundarias**:
+    **AboutPage**  
+    Edita **nombre de usuario** (TextField)  
+    Activa/desactiva el reset (Switch)  
+    Botón: **Tap = volver** / **Long-press = replace Home**  
+    **ListContentPage**  
+    Botón para ir a AboutPage  
+
+5. **Navegación con condiciones**:
+    **Contador par** va a **ListContentPage**  
+    **Contador impar** va a **AboutPage**  
+    Desde **ListContentPage** se puede ir a **AboutPage** y volver  
 
 ## Repositorio
 
