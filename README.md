@@ -1,47 +1,41 @@
-# Laboratorio 6 
+# Laboratorio 7 – Persistencia de datos en la aplicación  
 
 **Matrícula:** 2020479040  
 **Alumno:** Juan Rabay  
 
-## 📖 Resumen de cambios
+---
 
-1. **Ciclo de vida completo** de `MyHomePage` con logs (usando `Logger`):
-   - createState
-   - initState
-   - didChangeDependencies
-   - build (incluye mounted)
-   - reassemble(hot reload)
-   - didUpdateWidget
-   - deactivate
-   - dispose
+## Resumen de cambios
 
-2. **Gestión de estado global** con **Provider** (ChangeNotifier):
-    Variables: counter, username, allowReset
-    Métodos: incrementCounter(), decrementCounter(), resetCounter(), setUsername(), toggleReset()
+1. **Menú lateral** reutilizable (`AppDrawer`):  
+    Opciones: Home, Preferencias, Actividades.
 
-3. **UI Home**:
-   - Card actualizado con nuevo texto:
-    ¡Bienvenido, "texto!"
-    Descripción del framework
-    Icono SVG
-    Contador Provider
-    Botones **– / reset / +** (reset solo si `allowReset == true`, es decir, cuando el usuario lo permite)
-    Único botón de navegación con **tap = push** / **long-press = pushReplacement**  
+2. **Persistencia con SharedPreferences** (key–value):  
 
-4. **Pantallas secundarias**:
-    **AboutPage**  
-    Edita **nombre de usuario** (TextField)  
-    Activa/desactiva el reset (Switch)  
-    Botón: **Tap = volver** / **Long-press = replace Home**  
-    **ListContentPage**  
-    Botón para ir a AboutPage  
+    En **PreferencesPage**:  
+        boton de “Permitir reiniciar contador”  
+        Al cambiarlo, se almacena en SharedPreferences.  
 
-5. **Navegación con condiciones**:
-    **Contador par** va a **ListContentPage**  
-    **Contador impar** va a **AboutPage**  
-    Desde **ListContentPage** se puede ir a **AboutPage** y volver  
+    En **HomePage**:  
+        carga la preferencia  
+        Botón de “Reiniciar” sólo aparece si está habilitado  
+        Al volver de Preferences, recarga la preferencia automáticamente.
+
+3. **Persistencia con SQLite**:  
+   - **Entidad `Activity`** (`id`, `date`, `name`).  
+ 
+    **ActivitiesPage**:  
+
+        Lista de actividades.  
+        “+” para insertar nueva actividad.  
+        Botón de borrar junto a cada ítem.  
+
+4. **Integración en HomePage**:  
+    `Scaffold.drawer` con `AppDrawer`.  
+    Card con contador, saludo, descripción y botones.  
+    El reset ya no queda en Provider, sino en SharedPreferences.  
+    Navegación a Preferences y Activities desde botones o menú lateral.  
 
 ## Repositorio
 
-[GitHub - 3479A321_2020479040](https://github.com/Juan-Rabay/3479A321_2020479040)
-
+https://github.com/Juan-Rabay/3479A321_2020479040.git
