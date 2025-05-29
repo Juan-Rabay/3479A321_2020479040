@@ -3,7 +3,7 @@
 **Matrícula:** 2020479040  
 **Alumno:** Juan Rabay  
 
-## 📖 Resumen de cambios
+## Resumen de cambios
 
 1. **Ciclo de vida completo** de `MyHomePage` con logs (usando `Logger`):
    - createState
