@@ -5,7 +5,7 @@ class AppData extends ChangeNotifier {
   String _username = 'Usuario';
   bool _allowReset = true;
 
-  int get counter => _counter;
+  int get counter     => _counter;
   String get username => _username;
   bool get allowReset => _allowReset;
 
@@ -31,8 +31,8 @@ class AppData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void toggleReset(bool value) {
-    _allowReset = value;
+  void toggleReset(bool v) {
+    _allowReset = v;
     notifyListeners();
   }
 }
