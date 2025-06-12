@@ -1,24 +1,10 @@
-# Laboratorio
+# Laboratorio 9
 
  2020479040  Juan Rabay
 
-5to laboratorio se hizo lo siguiente:
+## Features
 
-- Creación de nuevas ramas en Git.
-- Actualización del diseño de la pantalla principal (`Home`) utilizando `Card`, `Column` y `Row`.
-- Inclusión de navegación condicional usando `Navigator.push()`.
-- Creación de dos nuevas pantallas: `ListContentPage` y `AboutPage`.
-- Uso de un `ListView.builder` para desplegar una lista dinámica.
-
-## Estructura de Pantallas
- - Home
- - About Page
- - List Content Page
-## Navegación
-
-- Si el contador es **par**, se navega a la **Lista de Contenidos**.
-- Si el contador es **impar**, se navega a la **pantalla Sobre**.
-- Desde Lista se puede ir a Sobre.
+Se incluyó la opcion de sacar fotos para incluirla en la app, y, además, una galeria que guarda las fotos que el usuario sacó ahi.
 
 ## Repositorio
 
